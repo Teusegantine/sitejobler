@@ -1,8 +1,2 @@
-<IfModule mod_rewrite.c>
-RewriteEngine On
-
-# Suporte a Proxy/Load Balancer da Hostinger (evita loop infinito com X-Forwarded-Proto)
-RewriteCond %{HTTP:X-Forwarded-Proto} !https
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-</IfModule>
+# Configurações do Servidor
+Options -Indexes
