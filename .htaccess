@@ -1,7 +1,8 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
-# Forçar HTTPS sem alterar o domínio (evita loops com a Hostinger)
+# Suporte a Proxy/Load Balancer da Hostinger (evita loop infinito com X-Forwarded-Proto)
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
